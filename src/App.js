@@ -1,10 +1,12 @@
 import './App.css';
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Typography } from '@mui/material';
-import SignIn from './Views/SignIn';
+import SignIn from './Views/SignIn';       
+//import Dashboard2 from './Views/Dashboard2';
+import Dashboard from './Views/Dashboard';
+
 
 const theme = createTheme({
   palette: {
@@ -27,7 +29,9 @@ function App() {
       <BrowserRouter>
         <>
           <Routes >
-            <Route path="/" element={<SignIn />} />
+             <Route path="/" element={<SignIn />} /> 
+            {/* <Route path='/' element= {<Dashboard2/>} /> */}
+            {/* <Route path="/" element={<Dashboard />} /> */}
           </Routes>
         </>
       </BrowserRouter>
