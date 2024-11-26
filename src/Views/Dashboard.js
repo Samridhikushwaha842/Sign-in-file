@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemText, IconButton, Box } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import SignUp from '../zedgo/d/signup';
 
 const Dashboard = () => {
   const [open, setOpen] = useState(false);
@@ -71,6 +72,7 @@ const Dashboard = () => {
       {/* Main Content */}
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
+        <SignUp/>
         {/* Your dashboard content goes here */}
         <Typography variant="h4">Welcome to the Dashboard</Typography>
       </Box>

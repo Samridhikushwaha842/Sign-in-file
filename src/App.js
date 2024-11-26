@@ -1,12 +1,13 @@
 import './App.css';
-import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import React from 'react';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import SignIn from './Views/SignIn';       
-//import Dashboard2 from './Views/Dashboard2';
+import SignIn from './Views/SignIn';
+import SignUp from './Views/SignUp'; // Import SignUp
 import Dashboard from './Views/Dashboard';
-
+import Dashboard2 from './Views/Dashboard2'; // Ensure Dashboard2 is imported
+import StudentList from './Views/StudentList'; // Make sure to import correctly
 
 const theme = createTheme({
   palette: {
@@ -14,12 +15,12 @@ const theme = createTheme({
       main: '#ff0000',
     },
     primary: {
-      main: '#4ADBD1'
+      main: '#4ADBD1',
     },
     secondary: {
-      main: '#FFFF'
+      main: '#FFFFFF', // Corrected to include a hex code for white
     },
-  }
+  },
 });
 
 function App() {
@@ -27,18 +28,20 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter>
-        <>
-          <Routes >
-             <Route path="/" element={<SignIn />} /> 
-            {/* <Route path='/' element= {<Dashboard2/>} /> */}
-            {/* <Route path="/" element={<Dashboard />} /> */}
-          </Routes>
-        </>
+           {/* Set signup as the landing page */}
+        <Routes>
+          <Route path="/" element={<SignUp />}>
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard2" element={<Dashboard2 />} />
+          <Route path="/students" element={<StudentList />} />
+          {/* Optional: Redirect from any unknown paths to the signup page */}
+          <Route path="*" element={<Navigate to="/" />} />
+          </Route>
+        </Routes>
       </BrowserRouter>
     </ThemeProvider>
   );
 }
 
 export default App;
-
-

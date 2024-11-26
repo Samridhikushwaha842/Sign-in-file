@@ -2,7 +2,7 @@ import { Button, FormLabel, Stack, TextField } from '@mui/material';
 import { useState } from 'react';
 import {img } from '@mui/icons-material';
 
-export default function BoxSystemProps() {
+ function BoxSystemProps() {
   // State variables for storing email and password
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -67,8 +67,9 @@ export default function BoxSystemProps() {
             required // Ensure field is not empty
           /><br />  
 
-          <FormLabel>
-            <a href="#" style={{ textDecoration: 'none'}}>Forgot your password?</a>
+          <FormLabel> 
+            Forgot your password?
+            {/* <a href="#" style={{ textDecoration: 'none'}}>Forgot your password?</a> */}
           </FormLabel><br />
 
           <Button
@@ -102,3 +103,4 @@ export default function BoxSystemProps() {
     </Stack>
   );
 }
+export default BoxSystemProps;

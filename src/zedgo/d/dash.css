@@ -1,0 +1,58 @@
+/* dash.css */
+
+/* General styles */
+.dashboard-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  
+  .paper-item {
+    padding: 8px;
+    border: 1px solid black;
+    text-align: center;
+  }
+  
+  /* Notifications and calendar layout */
+  .notifications-container {
+    padding: 8px;
+    border: 1px solid black;
+    width: 100%;
+  }
+  
+  /* Media Queries */
+  @media screen and (max-width: 1200px) {
+    .dashboard-container .paper-item .MuiDrawer-paper{
+        background: #b03535;
+      width: 15%;
+    }
+  }
+  
+  @media screen and (max-width: 900px) {
+    .dashboard-container .paper-item {
+      width: 22%;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .dashboard-container .paper-item {
+      width: 45%;
+    }
+  
+    .button-group, .select-batch, .search-field {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .dashboard-container .paper-item {
+      width: 100%;
+    }
+  
+    .button-group, .select-batch, .search-field {
+      width: 100%;
+    }
+  }
+  
