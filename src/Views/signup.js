@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
-// import image from './image.png';
+import image from './image.png';
 
-const SignUp = () => {
+const SignIn = () => {
   const handleLogin = () => {
     // Redirect to the dashboard page
     window.location.href = '/app';
@@ -94,7 +94,7 @@ const SignUp = () => {
         >
           <Box>
             <img
-              // src={image}.
+              src={image}
               alt="ZedGoo Logo"
               style={{ width: '8rem', marginBottom: 14, marginLeft: 22 }}
             />
@@ -111,4 +111,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;
