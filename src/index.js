@@ -1,29 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-//import App from './zedgo/d/app'
+import App from './app.js';
 import reportWebVitals from './reportWebVitals';
 
-//import SignUp from './zedgo/d/signup';
-//import BoxSystemProps from './Views/SignIn';
-//import ZedGo from './zedgo/Zedgo';
-//import Dash from './Views/dashboard1'
-import Layout from './Views/layout.js'
-import DashBoard from './Views/list.js';
-
-
-
+import   BoxSystemProps from './SignIn.js';
+import ZedGo from './Zedgo.js';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+   
+    <App />
     {/* <ZedGo/> */}
-    {/* <SignUp/> */}
-    {/* <App /> */}
-  
-    <Layout/>
-    {/* < BoxSystemProps/> */}
+     
   </React.StrictMode>
 );
 

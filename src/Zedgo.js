@@ -1,6 +1,6 @@
 import { Box, Stack, Typography, Avatar } from "@mui/material";
-import some from './d/some.png'
-import SignUp from "./d/signup";
+import some from './some.png'
+import SignIn from "./signup";
 import { useState, useEffect } from "react";
 
 const ZedGo = () => {
@@ -19,7 +19,7 @@ const ZedGo = () => {
 
   // If showSignUp is true, render the SignUp component
   if (showSignUp) {
-    return <SignUp />;
+    return <SignIn />;
   }
 
   // Otherwise, render the loading screen

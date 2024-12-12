@@ -5,9 +5,10 @@ import MessageIcon from '@mui/icons-material/Message';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import MenuIcon from '@mui/icons-material/Menu';
 import DashBoard from './list'; // Adjust the path as needed
-import { Outlet } from 'react-router-dom';
+import {  Outlet } from 'react-router-dom';
 import PopupComponent from './Popup';
 import './dash.css'; // Ensure your CSS is modular and scoped properly
+
 
 const Layout = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -27,6 +28,7 @@ const Layout = () => {
   };
 
   const drawerContent = (
+   
     <Box sx={{ overflow: 'auto', height: '100%' }}>
       <Box
         sx={{
@@ -46,8 +48,10 @@ const Layout = () => {
           MAIN MENU
         </Typography>
       </Box>
+      
       <DashBoard /> {/* Ensure this component renders valid menu items */}
     </Box>
+  
   );
 
   return (
