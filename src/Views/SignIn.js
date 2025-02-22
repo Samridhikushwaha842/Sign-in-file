@@ -1,41 +1,28 @@
 import React from 'react';
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box, Button, TextField, Typography, useTheme } from '@mui/material';
 import image from './image.png';
 
+import SigninTheme from '../CSS/SignIn/SigninTheme';
+
 const SignIn = () => {
+
+  const theme = useTheme();
+  const styles = SigninTheme(theme);
+
   const handleLogin = () => {
     // Redirect to the dashboard page
-    window.location.href = '/app';
+    window.location.href = '/dashboard';
   };
 
   return (
-    <Box sx={{ position: 'relative', height: '100vh', backgroundColor: '#f5f5f5' }}>
+    <Box sx={styles.container}>
       {/* Sign-In Form Container */}
       <Box
-        width={'70%'}
-        height={'70vh'}
-        display={'flex'}
-        flexDirection={'row'}
-        sx={{
-          marginLeft: '15%',
-          marginTop: '5%',
-          border: '1px solid grey',
-          borderRadius: '10px',
-          backgroundColor: '#ffffff',
-          zIndex: 1,
-        }}
+        sx={styles.formContainer}
       >
         {/* TextField */}
         <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            textAlign: 'left',
-            width: '50%',
-            height: '100px',
-            marginLeft: '70px',
-            marginTop: '70px',
-          }}
+          sx={styles.textFieldSection}
         >
           <Typography variant="h4" component="h1" gutterBottom>
             Sign In
@@ -61,19 +48,13 @@ const SignIn = () => {
           />
           <Typography
             variant="body2"
-            sx={{ marginTop: 1, marginBottom: 3, color: 'black', cursor: 'pointer' }}
+            sx={styles.forgotPassword}
           >
             Forgot your password?
           </Typography>
           <Button
             variant="contained"
-            sx={{
-              backgroundColor: '#333',
-              color: '#fff',
-              width: '50%',
-              marginLeft: '25%',
-              marginTop: 3,
-            }}
+            sx={styles.loginButton}
             onClick={handleLogin} // Attach the login handler
           >
             Log in
@@ -82,29 +63,21 @@ const SignIn = () => {
 
         {/* Image Field */}
         <Box
-          sx={{
-            backgroundColor: '#ffffff',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            width: '50%',
-            borderRadius: '0px 10px 10px 0px',
-            alignItems: 'center',
-          }}
+          sx={styles.imageSection}
         >
           <Box>
             <img
               src={image}
               alt="ZedGoo Logo"
-              style={{ width: '8rem', marginBottom: 14, marginLeft: 22 }}
+              style={styles.logoImage}
             />
-            <Typography variant="h3" sx={{ fontWeight: 'bold' }}>
+            <Typography variant="h3" sx={styles.logoText}>
               ZedGoo
             </Typography>
           </Box>
         </Box>
       </Box>
-      <Typography mt={1} sx={{ fontSize: '12px', marginLeft: '40%', marginTop: 4 }}>
+      <Typography mt={1} sx={styles.footerText}>
         © 2024, Eimple Labs Pvt. Ltd. All Rights Reserved.
       </Typography>
     </Box>

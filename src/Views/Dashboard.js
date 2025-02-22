@@ -1,10 +1,11 @@
 // src/Dash.js
 import React, { useState } from 'react';
 import { Box, Typography, TextField, Paper, Container, ButtonGroup, Button, Select, MenuItem, Grid } from '@mui/material';
-import Notifications from './notification';
-import BasicDateCalendar from './calender';
+import Notifications from './Notifications';
+import Calender from './Calender';
 import './dash.css';
-const Dash = () => {
+
+const Dashboard = () => {
   const [activeButton, setActiveButton] = useState('Year');
 
   const handleClick = (button) => {
@@ -80,7 +81,7 @@ const Dash = () => {
         </Grid>
         <Grid item xs={12} md={4}>
           <Paper elevation={3} sx={{ padding: .5 }}>
-            <BasicDateCalendar />
+            <Calender />
           </Paper>
         </Grid>
       </Grid>
@@ -90,4 +91,4 @@ const Dash = () => {
   );
 };
 
-export default Dash;
+export default Dashboard;

@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { Tabs, Tab, Box, Paper, Avatar,Button, Typography, Grid, IconButton, Input, Divider } from '@mui/material';
-import {Mic, Send } from '@mui/icons-material';
-import BatchInfo from './Batchinfo';
+import { Tabs, Tab, Box, Paper, Avatar, Button, Typography, Grid, IconButton, Input, Divider } from '@mui/material';
+import { Mic, Send } from '@mui/icons-material';
+import BatchInfo from './BatchInfo';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
+import { Table, TableHead, TableBody, TableRow, TableCell, useTheme } from '@mui/material';
+import BatchListTheme from '../CSS/BatchList/BatchListTheme';
+
+
 
 const messages = [
   {
@@ -22,6 +25,12 @@ const students = Array(10).fill({
 });
 
 const BatchList = () => {
+
+  const theme = useTheme();
+  const styles = BatchListTheme(theme);
+
+
+
   const [tabIndex, setTabIndex] = useState(0);
   const [selectedBatch, setSelectedBatch] = useState(null);
   const [selectedMessage, setSelectedMessage] = useState(null);
@@ -37,31 +46,20 @@ const BatchList = () => {
     setSelectedMessage(message);
   };
 
-  const iconStyle = {
-    backgroundColor: 'white',
-    color: '#000',
-    borderRadius: '50%',
-    padding: 1,
-    border: '1px solid grey',
-  };
-
-  const Batchstyle = {
-    backgroundColor: 'white', color: '#000', borderRadius: '50%', padding: 1 
-  };
-
+ 
   const HeadBackgroundColor = selectedBatch ? '#FFFFFF' : '#313131';
   const HeadColor = selectedBatch ? 'black' : 'white';
   const boxBackgroundColor = selectedBatch ? '#DCDCDC' : '#3F3F3F';
 
   const borderStyle = {
-    borderRadius: '10px 10px 0px 0px', 
-    padding: 3, 
-    backgroundColor: HeadBackgroundColor, 
-    display: 'flex', 
-    justifyContent: 'space-between', 
-    alignItems:'center',
+    borderRadius: '10px 10px 0px 0px',
+    padding: 3,
+    backgroundColor: HeadBackgroundColor,
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     color: HeadColor,
-    boxShadow: '0px 1px 8px rgba(0, 0, 0, 0.8)' 
+    boxShadow: '0px 1px 8px rgba(0, 0, 0, 0.8)'
   };
 
   const Cellstyle = {
@@ -78,26 +76,26 @@ const BatchList = () => {
   };
 
   const evenRowStyle = {
-    backgroundColor: selectedBatch ? '#DCDCDC' : '#3F3F3F', 
+    backgroundColor: selectedBatch ? '#DCDCDC' : '#3F3F3F',
     ...cellTextStyle,
   };
 
   const oddRowStyle = {
-    backgroundColor: selectedBatch ? '#FFFFFF' : '#313131', 
+    backgroundColor: selectedBatch ? '#FFFFFF' : '#313131',
     ...cellTextStyle,
   };
 
   const tabStyle = {
     color: HeadColor,
   };
-  const Buttonstyle={
-    marginLeft:4,
-    marginRight:'1rem',
-    color:'black',
+  const Buttonstyle = {
+    marginLeft: 4,
+    marginRight: '1rem',
+    color: 'black',
     border: '1px solid black',
-    fontSize: '10px', 
+    fontSize: '10px',
     borderRadius: '20px',
-    padding:'3px'
+    padding: '3px'
   };
 
   return (
@@ -108,25 +106,25 @@ const BatchList = () => {
           <Grid item xs={6} sx={{ backgroundColor: boxBackgroundColor, color: 'white', borderRadius: '10px', position: 'relative', height: '100%' }}>
             <Box style={borderStyle}>
               {selectedMessage ? (
-                  <>
-                  <ArrowBackIcon sx={{marginLeft:1}}/>
-                    <Avatar src={selectedMessage.avatar} sx={{width: '40px', height: '40px'}} />
-                    <Typography variant="body1" component="div" sx={{ marginLeft: 1 }}>
-                      {`${selectedMessage.name} (Batch ID: ${selectedMessage.batchId})`}
-                    </Typography>
-                  </>
-                ) : (
-                  <Typography variant="h6" component="div" sx={{ marginLeft: 2 }}>
-                    {`Broadcast ${selectedBatch ? `for Batch ID: ${selectedBatch}` : ''}`}
+                <>
+                  <ArrowBackIcon sx={{ marginLeft: 1 }} />
+                  <Avatar src={selectedMessage.avatar} sx={{ width: '40px', height: '40px' }} />
+                  <Typography variant="body1" component="div" sx={{ marginLeft: 1 }}>
+                    {`${selectedMessage.name} (Batch ID: ${selectedMessage.batchId})`}
                   </Typography>
-                )}
+                </>
+              ) : (
+                <Typography variant="h6" component="div" sx={{ marginLeft: 2 }}>
+                  {`Broadcast ${selectedBatch ? `for Batch ID: ${selectedBatch}` : ''}`}
+                </Typography>
+              )}
               {selectedMessage ? (
                 <Box>
-                    <Button variant="outlined" style={Buttonstyle}>Mark Done</Button>
-                    <Button variant="outlined" style={Buttonstyle} >Remote Access</Button>
+                  <Button variant="outlined" style={Buttonstyle}>Mark Done</Button>
+                  <Button variant="outlined" style={Buttonstyle} >Remote Access</Button>
                 </Box>
               ) : (
-                <IosShareIcon sx={{ marginRight: '1rem', ...iconStyle }} />
+                <IosShareIcon sx={styles.iconStyle} />
               )}
             </Box>
 
@@ -137,7 +135,7 @@ const BatchList = () => {
                 </Paper>
               ) : (
                 <Typography variant="body1" sx={{ color: HeadColor }}>
-                
+
                 </Typography>
               )}
             </Grid>
@@ -146,33 +144,33 @@ const BatchList = () => {
               <Box sx={{ display: 'flex', alignItems: 'center', borderRadius: '63px', backgroundColor: HeadBackgroundColor, boxShadow: '0px 1px 6px rgba(0, 0, 0, 0.6)' }}>
                 <Input placeholder="Reply" sx={{ flex: 1, paddingLeft: '1rem', color: HeadColor, '& .MuiInputBase-input': { color: HeadColor } }} disableUnderline />
                 <IconButton>
-                  <AttachFileIcon style={Batchstyle} />
+                  <AttachFileIcon sx={styles.Batchstyle} />
                 </IconButton>
                 <IconButton>
-                  <Mic style={Batchstyle} />
+                  <Mic sx={styles.Batchstyle} />
                 </IconButton>
                 <IconButton>
-                  <Send style={Batchstyle} />
+                  <Send sx={styles.Batchstyle}  />
                 </IconButton>
               </Box>
             </Box>
           </Grid>
-          
+
           {/* Right side with tabs and detailed message view */}
           <Grid item xs={5.6} sx={{ marginLeft: '2rem', padding: 2, backgroundColor: boxBackgroundColor, color: 'black', borderRadius: '10px' }}>
             <Tabs value={tabIndex} onChange={handleTabChange}>
-              <Tab label="Active Students" style={tabStyle}/>
+              <Tab label="Active Students" style={tabStyle} />
               <Tab label="Active Queries" style={tabStyle} />
-              <Tab label="Resolved Queries" style={tabStyle}/>
+              <Tab label="Resolved Queries" style={tabStyle} />
             </Tabs>
             <Box>
               {tabIndex === 0 && (
                 <Table sx={{ marginTop: 1, border: '1px solid grey', padding: 1 }}>
                   <TableHead>
                     <TableRow sx={tableHeadStyle}>
-                      <TableCell style={{...Cellstyle, ...cellTextStyle}}>Profile</TableCell>
-                      <TableCell style={{...Cellstyle, ...cellTextStyle}}>Name</TableCell>
-                      <TableCell style={{...Cellstyle, ...cellTextStyle}}>Batch ID</TableCell>
+                      <TableCell style={{ ...Cellstyle, ...cellTextStyle }}>Profile</TableCell>
+                      <TableCell style={{ ...Cellstyle, ...cellTextStyle }}>Name</TableCell>
+                      <TableCell style={{ ...Cellstyle, ...cellTextStyle }}>Batch ID</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -181,13 +179,13 @@ const BatchList = () => {
                         key={index}
                         sx={index % 2 === 0 ? evenRowStyle : oddRowStyle}
                       >
-                        <TableCell style={{...Cellstyle, ...cellTextStyle}}>
+                        <TableCell style={{ ...Cellstyle, ...cellTextStyle }}>
                           <Avatar src={student.profile} sx={{ width: '30px', height: '30px' }} />
                         </TableCell >
-                        <TableCell style={{...Cellstyle, ...cellTextStyle}}>
+                        <TableCell style={{ ...Cellstyle, ...cellTextStyle }}>
                           <Typography variant="body1">{student.name}</Typography>
                         </TableCell>
-                        <TableCell style={{...Cellstyle, ...cellTextStyle}}>
+                        <TableCell style={{ ...Cellstyle, ...cellTextStyle }}>
                           <Typography variant="body1">{student.batchId}</Typography>
                         </TableCell>
                       </TableRow>
@@ -199,8 +197,8 @@ const BatchList = () => {
               {tabIndex === 1 && (
                 <Box>
                   {messages.map((message, index) => (
-                    <Paper 
-                      key={index} 
+                    <Paper
+                      key={index}
                       sx={{ padding: 2, marginBottom: 2, cursor: 'pointer' }}
                       onClick={() => handleSelectMessage(message)} // Handle message click
                     >

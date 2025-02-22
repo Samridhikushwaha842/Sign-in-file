@@ -1,28 +1,29 @@
 import React from 'react';
 import { Route, Routes, BrowserRouter, Navigate } from 'react-router-dom'; // Import BrowserRouter
-import Dash from './dashboard1.js';
-import Help from './help.js';
-import Student from './Students.js';
-import BatchList from './BatchList.js';
-import Broadcast from './broadcast.js';
-import Setting from './Settings.js';
-import Logout from './logout.js';
-import About from './about.js';
-import Layout from './layout.js';
-import ZedGo from './Zedgo.js';
-import StudentsList from './Studentlist.js';
+import Dashboard from './Views/Dashboard.js';
+import Help from './Views/Help.js';
+import Student from './Views/Students.js';
+import BatchList from './Views/BatchList.js';
+import Broadcast from './Views/Broadcast.js';
+import Setting from './Views/Setting.js';
+import Logout from './Views/Logout.js';
+import About from './Views/About/index.js';
+import Layout from './Views/Layout.js';
+import ZedGo from './Views/ZedGo.js';
+import StudentsList from './Views/StudentsList.js';
+import SignIn from './Views/SignIn.js'; 
 
 function App() {
   return (
     <BrowserRouter> {/* Wrap Routes with BrowserRouter */}
-      <Routes> {/* Define routes */}
+      <Routes> 
         {/* Direct route to ZedGo component */}
-        <Route path='Zedgo' element={<ZedGo />} />
-        
+        <Route path='/' element={<ZedGo />} />
+        <Route path="signup" element={<SignIn />} />
         {/* Layout route with nested paths */}
-        <Route path="/" element={<Layout />}>
-          <Route path="dashboard1" element={<Dash />} />
-          <Route path="Students" element={<Student />} />
+        <Route element={<Layout />}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="student" element={<Student />} />
           <Route path="Batchlist" element={<BatchList />} />
           <Route path="broadcast" element={<Broadcast />} />
           <Route path="Settings" element={<Setting />} />
